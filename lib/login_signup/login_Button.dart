@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class LoginButton extends StatelessWidget {
   final String text;
   final double paddingLT;
@@ -17,6 +18,8 @@ class LoginButton extends StatelessWidget {
         color: Colors.blue,
         borderRadius: BorderRadius.circular(20),
       ),
+
+      // Text for the button with 'text' variable 
       child: Text(
         text, 
         style: const TextStyle(

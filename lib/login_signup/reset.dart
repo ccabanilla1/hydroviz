@@ -14,7 +14,7 @@ class Reset extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HydroViz'),
+        title: const Text('HydroViz', style: TextStyle(color: Colors.white)),
         backgroundColor: AppColors.alternate,
       ),
       backgroundColor: AppColors.primaryBack,
@@ -24,10 +24,11 @@ class Reset extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+
+                  // Box to create space in y direction
                   const SizedBox(height: 20),
 
-                  
-                    
+                  // Reset Password Heading
                   const Padding(
                     padding: EdgeInsets.fromLTRB(350, 0, 0, 0),
                     child: Row(
@@ -37,15 +38,16 @@ class Reset extends StatelessWidget {
                     ),
                   ),
                     
-                  
-
+                  // Box to create space in y direction
                   const SizedBox(height: 20),
 
-                  
+
                   const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     
                     children: [
+
+                      // Instructions
                       Text('Enter the email associated with your account and', 
                       style: TextStyle(
                         fontSize: 20,
@@ -57,8 +59,11 @@ class Reset extends StatelessWidget {
                       ),),
                     ],
                   ),
-        
+
+                  // Box to create space in y direction
                   const SizedBox(height: 40,),
+
+                  // Email Text Field
                   Padding(
                     padding: const EdgeInsets.fromLTRB(350, 0, 350, 0),
                     child: LoginTextfield(
@@ -68,12 +73,7 @@ class Reset extends StatelessWidget {
                     ) 
                   ),
 
-                  
-
-                  
-                  
-              
-                  
+                  // Reset Link Button
                   const SizedBox(height: 30),
                   const LoginButton(text: 'Send reset Link', paddingLT: 50,),
                   const SizedBox(height: 30),

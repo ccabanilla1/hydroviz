@@ -5,17 +5,16 @@ import 'package:hydroviz/utils/app_style.dart';
 
 class Login extends StatelessWidget {
   Login({super.key});
+
+  // Controllers for the Text
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void hello(){
-    
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HydroViz'),
+        title: const Text('HydroViz', style: TextStyle(color: Colors.white),),
         backgroundColor: AppColors.alternate,
       ),
       backgroundColor: AppColors.primaryBack,
@@ -25,10 +24,10 @@ class Login extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  // Box to create space in y direction
                   const SizedBox(height: 20),
 
-                  
-                    
+                  // Login Text
                   const Padding(
                     padding: EdgeInsets.fromLTRB(370, 0, 0, 0),
                     child: Row(
@@ -38,10 +37,10 @@ class Login extends StatelessWidget {
                     ),
                   ),
                     
-                  
-
+                  // Box to create space in y direction
                   const SizedBox(height: 30),
 
+                  // Login Text Field
                   Padding(
                     padding: const EdgeInsets.fromLTRB(350, 0, 350, 0),
                     child: LoginTextfield(
@@ -51,8 +50,10 @@ class Login extends StatelessWidget {
                     ) 
                   ),
 
+                  // Box to create space in y direction
                   const SizedBox(height: 40),
 
+                  // Password Text Fielf
                   Padding(
                     padding: const EdgeInsets.fromLTRB(350, 0, 350, 0),
                     child: LoginTextfield(
@@ -62,8 +63,10 @@ class Login extends StatelessWidget {
                     ) 
                   ),
                   
+                  // Box to create space in y direction
                   const SizedBox(height: 20),
 
+                  // Forgot Password
                   const Padding(
                     padding:  EdgeInsets.symmetric(horizontal: 350),
                     child:  Row(
@@ -76,6 +79,8 @@ class Login extends StatelessWidget {
                       ],
                     ),
                   ),
+
+                  // Not a member, SignUp
                   const SizedBox(height: 30),
                   const LoginButton(text: 'Sign In', paddingLT: 50,),
                   const SizedBox(height: 30),

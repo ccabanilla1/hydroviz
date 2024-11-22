@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hydroviz/login_signup/login.dart';
 import 'package:hydroviz/login_signup/reset.dart';
 // import 'package:hydroviz/utils/app_style.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Reset(),
+      home: Login(),
     );
   }
 }
