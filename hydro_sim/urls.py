@@ -6,11 +6,11 @@ from .views import (
     WellViewSet,
     AquiferPropertiesViewSet,
     FieldMeasurementViewSet,
+    ComponentViewSet,  
     # Views for simulation data
     SimulationProjectViewSet,
     SimulationModelViewSet,
     SimulationResultViewSet,
-    # Add any additional views here
 )
 
 # Namespace for the hydro_sim app URLs
@@ -19,13 +19,14 @@ app_name = 'hydro_sim'
 # Router for handling model viewsets
 router = DefaultRouter()
 
-# Add any app-specific routing
-# router.register(r'custom-endpoint', CustomViewSet, basename='custom')
+# Register all viewsets
+router.register(r'projects', ProjectViewSet, basename='project')
+router.register(r'wells', WellViewSet, basename='well')
+router.register(r'aquifer-properties', AquiferPropertiesViewSet, basename='aquifer-properties')
+router.register(r'field-measurements', FieldMeasurementViewSet, basename='field-measurement')
+router.register(r'components', ComponentViewSet, basename='component')  # Add this
+router.register(r'simulation-projects', SimulationProjectViewSet, basename='simulation-project')
+router.register(r'simulation-models', SimulationModelViewSet, basename='simulation-model')
+router.register(r'simulation-results', SimulationResultViewSet, basename='simulation-result')
 
-urlpatterns = [
-    # Add specific URLs here if needed
-    # path('custom-path/', custom_view, name='custom-view'),
-]
-
-# Include router URLs
-urlpatterns += router.urls
+urlpatterns = router.urls

@@ -54,22 +54,20 @@ class FieldMeasurementViewSet(viewsets.ModelViewSet):
 
 class ComponentViewSet(viewsets.ModelViewSet):
     serializer_class = ComponentSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [AllowAny]  # Keep for development
     
     def get_queryset(self):
-        return Component.objects.all()  # For testing, remove the filter
+        return Component.objects.all()
     
     def create(self, request, *args, **kwargs):
         try:
-            print("Received data:", request.data)  # Debug log
             data = {
                 'type': request.data.get('type'),
-                'location_x': request.data.get('location_x'),  # Note the change from x to location_x
-                'location_y': request.data.get('location_y'),  # Note the change from y to location_y
+                'location_x': request.data.get('location_x'),
+                'location_y': request.data.get('location_y'),
                 'properties': request.data.get('properties', {}),
                 'project': request.data.get('project')
             }
-            print("Processed data:", data)  # Debug log
             
             if not data['project']:
                 project = Project.objects.first()
@@ -89,13 +87,34 @@ class ComponentViewSet(viewsets.ModelViewSet):
                 data['project'] = project.project_id
             
             serializer = self.get_serializer(data=data)
-            print("Is valid:", serializer.is_valid())  # Debug log
             if not serializer.is_valid():
-                print("Validation errors:", serializer.errors)  # Debug log
                 return Response(serializer.errors, status=400)
                 
             self.perform_create(serializer)
             return Response(serializer.data, status=201)
         except Exception as e:
-            print("Error:", str(e))  # Debug log
+            return Response({'error': str(e)}, status=400)
+
+    def destroy(self, request, *args, **kwargs):
+        try:
+            instance = self.get_object()
+            self.perform_destroy(instance)
+            return Response(status=204)
+        except Exception as e:
+            return Response({'error': str(e)}, status=400)
+
+    @action(detail=True, methods=['PATCH'])
+    def update_position(self, request, pk=None):
+        try:
+            component = self.get_object()
+            data = {
+                'location_x': request.data.get('location_x'),
+                'location_y': request.data.get('location_y')
+            }
+            serializer = self.get_serializer(component, data=data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=400)
+        except Exception as e:
             return Response({'error': str(e)}, status=400)
