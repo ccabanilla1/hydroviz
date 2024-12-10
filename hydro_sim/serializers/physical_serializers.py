@@ -1,6 +1,13 @@
 from rest_framework import serializers
 from ..models.physical_models import Project, Well, AquiferProperties, FieldMeasurement, Component
+from ..models.physical_models import HydroFile
 
+class HydroFileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HydroFile
+        fields = ['id', 'name', 'description', 'created_at', 'updated_at']
+        read_only_fields = ['created_at', 'updated_at']
+        
 # Basic project serializer
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:

@@ -3,7 +3,8 @@ from .physical_views import (
     WellViewSet,
     AquiferPropertiesViewSet,
     FieldMeasurementViewSet,
-    ComponentViewSet
+    ComponentViewSet,
+    HydroFileViewSet 
 )
 from .simulation_views import (
     SimulationProjectViewSet,
@@ -19,5 +20,6 @@ __all__ = [
     'ComponentViewSet',
     'SimulationProjectViewSet',
     'SimulationModelViewSet',
-    'SimulationResultViewSet'
+    'SimulationResultViewSet',
+    'HydroFileViewSet'  
 ]

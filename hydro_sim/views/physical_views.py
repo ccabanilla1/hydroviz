@@ -12,6 +12,12 @@ from ..serializers.physical_serializers import (
     FieldMeasurementSerializer,
     ComponentSerializer
 )
+from ..models.physical_models import HydroFile
+from ..serializers.physical_serializers import HydroFileSerializer
+
+class HydroFileViewSet(viewsets.ModelViewSet):
+    queryset = HydroFile.objects.all()
+    serializer_class = HydroFileSerializer
 
 class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
